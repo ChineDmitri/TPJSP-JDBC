@@ -31,7 +31,7 @@ public class CoursDAO {
 	public Connection getConnection() throws SQLException {
 		System.out.println("Connection basse de donné : " + conn.getClientInfo(null));
 
-		return conn;
+		return this.conn;
 	}
 
 	public Cours findById(int id) {
@@ -43,8 +43,6 @@ public class CoursDAO {
 			prepareStatement.setInt(1, id);
 
 			ResultSet resultSet = prepareStatement.executeQuery();
-
-			System.out.println(resultSet);
 
 			if (resultSet.next()) {
 				cours = new Cours(resultSet.getInt(1), resultSet.getString("intitule"),
